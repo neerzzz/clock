@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Clock</title>
+    <!-- <link rel="stylesheet" href="clock.css"> -->
+    <style>
+
+@import url('https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,300;1,300&display=swap');
+
+
+*{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+.container{
+    font-family:Josefin Sans;
+    display: flex;
+    /* flex-direction: column; */
+    justify-content:center ;
+    align-items: center;
+    
+    height: 100vh;
+
+
+}
+
+
+.clock{
+    
+    /* background-color: thistle; */
+  font-size: 1em;
+  font-style: italic;
+
+  }
+
+  .clock span{
+    text-shadow: 6px 6px 5px rgb(9, 193, 221);
+    /* margin: 1em; */
+    
+    /* background-color: blue; */
+    width: 2em ;
+    height: 2em   ;
+    display: inline-block;
+    align-items: center;
+    justify-content: center;
+  }
+
+
+  @media (min-width:45em) {
+
+    .clock{
+    
+        /* background-color: thistle; */
+      font-size: 2.2em;
+    }
+
+    
+  }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+
+
+    <div class="clock">
+        
+    <h1>Clock</h1>
+    <br>
+        <h1><span class="hour">00</span>:<span class="minute">00</span>:<span class="second">00</span> <span class="ampm">AM</span></h1>
+    </div>
+    </div>
+    <script >
+
+    const  hour=document.querySelector('.hour');
+    const  mins=document.querySelector('.minute');
+    const  sec=document.querySelector('.second');
+    const  ampmEl=document.querySelector('.ampm');
+
+
+
+    function clock() {
+        let h=new Date().getHours();
+        let m=new Date().getMinutes();
+        let s=new Date().getSeconds();
+        let ampm='AM';
+        if (h>12) {
+            h=h-12;
+            ampm='PM';
+        }
+        // else {ampm='AM'}    
+
+        // console.log(h,m,s);
+
+        h=h<10?'0'+h:h;
+        m=m<10?'0'+m:m;
+        s=s<10?'0'+s:s;
+        
+
+    hour.innerText=h;
+    mins.innerText=m;
+    sec.innerText=s;
+    ampmEl.innerText=ampm;
+    setTimeout(() => {
+        clock() ;
+    }, 1000);
+    }
+
+    clock();
+
+    </script>
+</body>
+</html>
